@@ -1,0 +1,117 @@
+class Character {
+  constructor(name) {
+    this.name = name;
+    this.position = { x: 0, y: 0 };
+    this.direction = 'right';
+    this.isBlocking = false;
+    this.isCrouching = false;
+    this.isJumping = false;
+    this.comboCount = 0;
+  }
+
+  // Movement functions
+  moveLeft() {
+    this.position.x -= 1;
+    this.direction = 'left';
+  }
+
+  moveRight() {
+    this.position.x += 1;
+    this.direction = 'right';
+  }
+
+  run(direction) {
+    if (direction === 'left') this.position.x -= 2;
+    if (direction === 'right') this.position.x += 2;
+  }
+
+  jump() {
+    this.isJumping = true;
+    this.position.y += 1;
+  }
+
+  frontFlip() {
+    if (this.isJumping) this.position.x += 1;
+  }
+
+  backFlip() {
+    if (this.isJumping) this.position.x -= 1;
+  }
+
+  crouch() {
+    this.isCrouching = true;
+  }
+
+  crouchMove(direction) {
+    if (this.isCrouching && direction === 'left') this.position.x -= 0.5;
+    if (this.isCrouching && direction === 'right') this.position.x += 0.5;
+  }
+
+  block() {
+    this.isBlocking = true;
+  }
+
+  // Attack functions
+  lightAttack() {
+    // Implement light attack logic
+  }
+
+  mediumAttack() {
+    // Implement medium attack logic
+  }
+
+  heavyAttack() {
+    // Implement heavy attack logic
+  }
+
+  specialAttack() {
+    // Implement special attack logic
+    this.comboCount += 1;
+  }
+
+  airLightAttack() {
+    // Implement air light attack logic
+  }
+
+  airMediumAttack() {
+    // Implement air medium attack logic
+  }
+
+  airHeavyAttack() {
+    // Implement air heavy attack logic
+  }
+
+  airSpecialAttack() {
+    // Implement air special attack logic
+    this.comboCount += 1;
+  }
+
+  // Crouching attacks
+  crouchLightAttack() {
+    // Implement crouch light attack logic
+  }
+
+  crouchMediumAttack() {
+    // Implement crouch medium attack logic
+  }
+
+  crouchHeavyAttack() {
+    // Implement crouch heavy attack logic
+  }
+
+  // Specials and Megas
+  addSpecialMove(specialMove) {
+    this.specialMove = specialMove;
+  }
+
+  addMegaMove(megaMove) {
+    this.megaMove = megaMove;
+  }
+}
+
+// Example usage
+const character = new Character('Fighter');
+character.moveRight();
+character.jump();
+character.specialAttack();
+character.block();
